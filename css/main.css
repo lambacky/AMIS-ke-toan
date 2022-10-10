@@ -1,0 +1,23 @@
+@import url(./layout/sibar.css);
+@import url(./base/icon.css);
+@import url(./layout/header.css);
+@import url(./layout/main-content.css);
+@import url(./layout/popup.css);
+@import url(./base/button.css);
+@import url(./base/input.css);
+@import url(./base/table.css);
+body {
+    font-family: Noto-Sans-Regular;
+    margin: 0;
+    font-size:14px;
+}
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Noto-Sans-Regular;
+    src: url(../assets/fonts/notosans-regular.2cb88a13.woff2);
+}
+
+

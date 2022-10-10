@@ -1,0 +1,31 @@
+.popup{
+    margin-top:30px;
+    background-color: #fff;
+}
+.popup-header {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:24px;
+}
+
+.popup-title {
+    font-size:24px;
+    font-weight: 700;
+}
+.popup-close {
+    display:flex;
+    gap:6px;
+}
+.popup-footer {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:12px 24px;
+    border-top:1px solid #E0E0E0;
+}
+.popup-footer .action {
+    display:flex;
+    align-items:center;
+    gap:8px;
+}

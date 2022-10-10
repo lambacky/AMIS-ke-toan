@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css" class="css">
+    <title>Quản lý nhân viên</title>
+</head>
+<body>
+    <div class="sibar">
+        <div class="logo">
+            <div class="option-icon"></div>
+            <img class="logo-icon" src="./assets/img/Logo_Module_TiengViet_White.66947422.svg" alt="Logo_Module_TiengViet_White" />
+        </div>
+        <div class="menu">
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-dashboard"></div>
+                <div class="item-title">Tổng quan</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-cash"></div>
+                <div class="item-title">Tiền mặt</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-bank"></div>
+                <div class="item-title">Tiền gửi</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-buy"></div>
+                <div class="item-title">Mua hàng</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-sale"></div>
+                <div class="item-title">Bán hàng</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-invoice"></div>
+                <div class="item-title">Quản lý hóa đơn</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-stock"></div>
+                <div class="item-title">Kho</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-tools"></div>
+                <div class="item-title">Công cụ dụng cụ</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-fixed-assets"></div>
+                <div class="item-title">Tài sản cố định</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-tax"></div>
+                <div class="item-title">Thuế</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-price"></div>
+                <div class="item-title">Giá thành</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-general"></div>
+                <div class="item-title">Tổng hợp</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-budget"></div>
+                <div class="item-title">Ngân sách</div>
+            </a>
+            <a href="" class="menu-item">
+                <div class="icon item-icon icon-report"></div>
+                <div class="item-title">Báo cáo</div>
+            </a>
+            <!-- <a href="" class="menu-item">
+                <div class="icon item-icon icon-finance"></div>
+                <div class="item-title">Phân tích tài chính</div>
+            </a> -->
+        </div>
+    </div>
+    <div class="header">
+        <div class="navbar-left">
+            <div class="icon navbar-icon icon-three-stripes"></div>
+            <div class="navbar-branch">
+                <div class="branch-name">CÔNG TY TNHH SẢN XUẤT - THƯƠNG MẠI - DỊCH VỤ QUI PHÚC</div>
+                <div class="icon navbar-icon icon-chevron-down-bold"></div>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <div class="icon navbar-icon icon-bell"></div>
+            <div class="navbar-user">
+                <div class="user-image">
+                    <img src="./assets/img/default-avatar.jpg" alt="User image" />
+                </div>
+                <div class="user-name">Nguyễn Văn Mạnh</div>
+                <div class="icon navbar-icon icon-chevron-down"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="content-header">
+            <div class="content-title">Nhân viên</div>
+            <div class="button add-employee">Thêm mới nhân viên</div>
+        </div>
+        <div class="content-body">
+            <div class="toolbar">
+                <div class="search-area">
+                    <input type="text" class="input input-search search-emp" placeholder="Tìm theo mã, tên nhân viên" />
+                    <div class="icon icon-search"></div>
+                </div>
+                <div class="icon refresh-button icon-refresh"></div>
+            </div>
+            <div class="content-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TÊN NHÂN VIÊN</th>
+                            <th>GIỚI TÍNH</th>
+                            <th>NGÀY SINH</th>
+                            <th>CHỨC DANH</th>
+                            <th>SỐ CMND</th>
+                            <th>TÊN ĐƠN VỊ</th>
+                            <th>SỐ TÀI KHOẢN</th>
+                            <th>TÊN NGÂN HÀNG</th>
+                            <th>CHI NHÁNH TK NGÂN HÀNG</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="paging"></div>
+        </div>
+        <div class="popup add-emp">
+            <div class="popup-header">
+                <div class="popup-title">Thông tin nhân viên</div>
+                <div class="popup-close">
+                    <div class="icon icon-help"></div>
+                    <div class="icon icon-close"></div>
+                </div>
+            </div>
+            <div class="popup-content"></div>
+            <div class="popup-footer">
+                <div class="button button1 cancel">Hủy</div>
+                <div class="action">
+                    <div class="button button1 store">Cất</div>
+                    <div class="button store-add">Cất và thêm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,131 @@
+.icon {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../assets/img/Sprites.64af8f61.svg);
+    background-repeat: no-repeat;
+}
+
+.icon-dashboard {
+    background-position: -30px -1628px;
+}
+
+.icon-cash {
+    background-position: -73px -1628px;
+}
+
+.icon-bank {
+    background-position: -117px -1628px;
+}
+
+.icon-buy {
+    background-position: -161px -1628px;
+}
+
+.icon-sale {
+    background-position: -204px -1628px;
+}
+
+.icon-invoice {
+    background-position: -249px -1628px;
+}
+
+.icon-stock {
+    background-position: -291px -1628px;
+}
+
+.icon-tools {
+    background-position: -336px -1628px;
+}
+
+.icon-fixed-assets {
+    background-position: -378px -1630px;
+}
+
+.icon-tax {
+    background-position: -423px -1630px;
+}
+
+.icon-price {
+    background-position: -467px -1628px;
+}
+
+.icon-general {
+    background-position: -510px -1630px;
+}
+
+.icon-budget {
+    background-position: -378px -1659px;
+}
+
+.icon-report {
+    background-position: -547px -1628px;
+}
+
+.icon-finance {
+    background-position: -204px -1664px;
+}
+
+.icon-three-stripes {
+    background-position: -843px -30px;
+}
+
+.icon-chevron-down-bold {
+    background-position: -1128px -360px;
+}
+
+.icon-chevron-down {
+    background-position: -464px -408px;
+}
+
+.icon-bell {
+    background-position: -787px -30px;
+}
+
+.icon-refresh {
+    background-position: -423px -201px;
+}
+
+.icon-refresh:hover {
+    background-position: -1097px -88px  ;
+}
+
+.icon-search {
+    background-position: -992px -360px;
+}
+
+.icon-checkbox-active {
+    background-position: -1224px -360px;
+}
+
+.icon-arrow-down-blue {
+    background-position: -896px -359px;
+}
+
+.icon-arrow-dropdown {
+    background-position: -560px -359px;
+}
+
+.icon-help {
+    background-position: -89px -144px;
+}
+
+.icon-close {
+    background-position: -144px -144px;
+    cursor: pointer;
+}
+
+.icon-danger {
+    background-position: -24px -954px;
+}
+
+.icon-question {
+    background-position: -826px -456px;
+}
+
+.icon-warning {
+    background-position: -592px -456px;
+}
+
+.icon-success {
+    background-position: -984px -456px;
+}

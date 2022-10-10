@@ -1,0 +1,41 @@
+.input {
+    padding-left: 12px;
+    padding-right: 8px;
+    border-radius: 2px;
+    height: 36px;
+    border: 1px solid #E0E0E0;
+    outline: none;
+
+}
+
+.input::placeholder {
+    color: #9E9E9E;
+    font-style: italic;
+}
+
+.input:hover {
+    outline: 1px solid #e2e2e2;
+}
+
+.input:focus {
+    border: 1px solid #2ca01c;
+}
+
+.input-search {
+    width: 260px;
+}
+
+.input-title {
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom: 4px;
+    white-space: nowrap;
+}
+
+.input-title-require {
+    color: red;
+}
+
+.input-error, .input-error:focus {
+    border-color: red!important;
+}

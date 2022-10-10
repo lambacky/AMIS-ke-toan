@@ -1,0 +1,33 @@
+.header {
+    float:left;
+    height:56px;
+    width:calc(100% - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+}
+
+.navbar-left, .navbar-right, .navbar-branch, .navbar-user {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left, .navbar-branch{
+    gap:16px;
+}
+
+.navbar-right, .navbar-user {
+    gap:24px;
+}
+
+.branch-name, .user-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-image img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
