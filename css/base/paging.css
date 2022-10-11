@@ -1,0 +1,25 @@
+.paging{
+
+    min-height:50px;
+    padding:16px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paging-right{
+    display:flex;
+    width:350px;
+    justify-content: space-between;
+}
+.record-in-page{
+    width:200px;
+}
+
+.page-number{
+    width:130px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 16px;
+}

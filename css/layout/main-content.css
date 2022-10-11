@@ -4,6 +4,7 @@
     width:calc(100% - 200px);
     height:calc(100vh - 56px);
     padding: 0 20px;
+    overflow:auto;
 }
 
 .content-header {
@@ -49,5 +50,9 @@
 }
 .content-table {
     padding: 0 16px;
+}
+.emp-table {
+    overflow:auto;
+    position:relative;
 }
 

@@ -6,10 +6,13 @@
 @import url(./base/button.css);
 @import url(./base/input.css);
 @import url(./base/table.css);
+@import url(./base/paging.css);
+@import url(./base/combobox.css);
+@import url(./base/dropdown.css);
 body {
     font-family: Noto-Sans-Regular;
     margin: 0;
-    font-size:14px;
+    font-size:13px;
 }
 *{
     box-sizing: border-box;

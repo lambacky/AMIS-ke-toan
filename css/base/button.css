@@ -1,18 +1,28 @@
-.button {
+.btn {
     color:white;
-    background-color: #39AC66;
-    padding:8px 16px;
-    border-radius: 6px;
+    background-color: #50B83C;
+    padding:0 16px;
+    border:none;
+    border-radius: 4px;
+    min-width: 80px;
+    height:36px;
 }
-.button:hover {
-    background-color: #6BC18D;
+.btn:hover {
+    background-color: #73C663;
     cursor:pointer;
 }
-.button1 {
+.btn:focus {
+    background-color: #409330;
+    cursor:pointer;
+}
+.btn-secondary {
     background-color:white;
     color:black;
-    border: 1px solid black;
+    border: 1px solid #E6E6E6;
 }
-.button1:hover {
+.btn-secondary:hover {
+    background-color:#EEEEEE;
+}
+.btn-secondary:focus {
     background-color:#E0E0E0;
 }
