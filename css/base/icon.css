@@ -129,9 +129,3 @@
 .icon-success {
     background-position: -984px -456px;
 }
-.icon-loading {
-    background: url(../../assets/loading.svg) no-repeat center;
-    width: 100%;
-    height: 100%;
-    animation: rotate 1s ease infinite;
-}

@@ -1,0 +1,14 @@
+.dropdown{
+}
+
+.dropdown-list{
+    display: none;
+    border:1px solid #E0E0E0;
+    position:absolute;
+}
+.dropdown-item {
+    background: white;
+    color:black;
+    padding:5px 5px;
+    width:150px;
+}

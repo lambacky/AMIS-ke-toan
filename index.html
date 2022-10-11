@@ -154,8 +154,13 @@
                                 <td>
                                     <div class="table-function">
                                         <div class="modify" onclick="modifyForm()">Sửa</div>
-                                        <div class="dropdown-list">
-                                            <div class="icon icon-arrow-down-blue"></div>
+                                        <div class="dropdown context-menu">
+                                            <div class="icon icon-arrow-down-blue" onclick="showMenu()"></div>
+                                            <div id="dropdown-list" class="dropdown-list">
+                                                <div class="dropdown-item">Nhân bản</div>
+                                                <div class="dropdown-item">Xóa</div>
+                                                <div class="dropdown-item">Ngưng sử dụng</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -180,8 +185,13 @@
                                 <td>
                                     <div class="table-function">
                                         <div class="modify" onclick="modifyForm()">Sửa</div>
-                                        <div class="dropdown-list">
-                                            <div class="icon icon-arrow-down-blue"></div>
+                                        <div class="dropdown context-menu">
+                                            <div class="icon icon-arrow-down-blue" onclick="showMenu()"></div>
+                                            <div id="dropdown-list" class="dropdown-list">
+                                                <div class="dropdown-item">Nhân bản</div>
+                                                <div class="dropdown-item">Xóa</div>
+                                                <div class="dropdown-item">Ngưng sử dụng</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -206,8 +216,13 @@
                                 <td>
                                     <div class="table-function">
                                         <div class="modify" onclick="modifyForm()">Sửa</div>
-                                        <div class="dropdown-list">
-                                            <div class="icon icon-arrow-down-blue"></div>
+                                        <div class="dropdown context-menu">
+                                            <div class="icon icon-arrow-down-blue" onclick="showMenu()"></div>
+                                            <div id="dropdown-list" class="dropdown-list">
+                                                <div class="dropdown-item">Nhân bản</div>
+                                                <div class="dropdown-item">Xóa</div>
+                                                <div class="dropdown-item">Ngưng sử dụng</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -240,6 +255,7 @@
                     </div>                  
                 </div>
             </div>
+            
         </div>
     </div>
     <div id="popup-background" class="form-background" style="background: rgba(0, 0,0, 0.4);display:none;width:100%;height:100%;position:absolute">
@@ -373,23 +389,41 @@
             </div>
         </div>
     </div>
+
+    <div id="loading" class="loading-svg">
+        <div class="icon-loading"></div>
+    </div>
     
-<script>
-    function openForm(){
-        document.getElementById("popup-background").style.display = "block";
-        document.getElementById("popup-title").innerHTML = "Thêm khách hàng";
-        document.getElementById("emp-id").focus();
-    }
-    function modifyForm(){
-        document.getElementById("popup-background").style.display = "block";
-        document.getElementById("popup-title").innerHTML = "Sửa khách hàng";
-        document.getElementById("emp-id").focus();
-    }
-    function closeForm(){
-        document.getElementById("popup-background").style.display = "none";
-    }
+    <script>
+        function loading(){
+            document.getElementById("loading").style.display = "block";
+            
+        }
+        function openForm(){
+            loading();
+            setTimeout(function(){
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("popup-background").style.display = "block";
+                document.getElementById("popup-title").innerHTML = "Thêm khách hàng";
+                document.getElementById("emp-id").focus();
+            },1000);
+        }
+        function modifyForm(){
+            loading();
+            setTimeout(function(){
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("popup-title").innerHTML = "Sửa khách hàng";
+                document.getElementById("emp-id").focus();
+            },1000);
+        }
+        function closeForm(){
+            document.getElementById("popup-background").style.display = "none";
+        }
+        function showMenu(){
+            document.getElementById("dropdown-list").style.display = "block";
+        }
 
 
-</script>
+    </script>
 </body>
 </html>

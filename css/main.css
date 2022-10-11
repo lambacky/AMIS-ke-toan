@@ -9,6 +9,7 @@
 @import url(./base/paging.css);
 @import url(./base/combobox.css);
 @import url(./base/dropdown.css);
+@import url(./base/loading.css);
 body {
     font-family: Noto-Sans-Regular;
     margin: 0;
