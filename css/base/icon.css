@@ -70,11 +70,11 @@
 }
 
 .icon-chevron-down-bold {
-    background-position: -1128px -360px;
+    background-position: -1123px -357px;
 }
 
 .icon-chevron-down {
-    background-position: -464px -408px;
+    background-position: -460px -404px;
 }
 
 .icon-bell {
@@ -98,11 +98,11 @@
 }
 
 .icon-arrow-down-blue {
-    background-position: -892px -356px;
+    background-position: -891px -355px;
 }
 
 .icon-arrow-dropdown {
-    background-position: -560px -359px;
+    background-position: -559px -358px;
 }
 
 .icon-help {
@@ -115,15 +115,21 @@
 }
 
 .icon-danger {
-    background-position: -24px -954px;
+    background-position: -29px -960px;
+    width:36px;
+    height:36px;
 }
 
 .icon-question {
-    background-position: -826px -456px;
+    background-position: -832px -462px;
+    width:36px;
+    height:36px;
 }
 
 .icon-warning {
-    background-position: -592px -456px;
+    background-position: -599px -464px;
+    width:36px;
+    height:36px;
 }
 
 .icon-success {

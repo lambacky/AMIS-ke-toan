@@ -2,10 +2,11 @@
     color:white;
     background-color: #50B83C;
     padding:0 16px;
-    border:none;
+    border:unset;
     border-radius: 4px;
     min-width: 80px;
     height:36px;
+    cursor:pointer;
 }
 .btn:hover {
     background-color: #73C663;
@@ -15,6 +16,10 @@
     background-color: #409330;
     cursor:pointer;
 }
+.btn:disabled{
+    opacity:0.56;
+}
+
 .btn-secondary {
     background-color:white;
     color:black;

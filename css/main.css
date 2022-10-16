@@ -1,8 +1,8 @@
-@import url(./layout/sibar.css);
+@import url(./layout/sidebar.css);
 @import url(./base/icon.css);
 @import url(./layout/header.css);
 @import url(./layout/main-content.css);
-@import url(./layout/popup.css);
+@import url(./base/dialog.css);
 @import url(./base/button.css);
 @import url(./base/input.css);
 @import url(./base/table.css);
@@ -14,6 +14,7 @@ body {
     font-family: Noto-Sans-Regular;
     margin: 0;
     font-size:13px;
+    display:flex;
 }
 *{
     box-sizing: border-box;

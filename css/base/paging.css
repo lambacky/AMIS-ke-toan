@@ -1,7 +1,6 @@
 .paging{
-
     min-height:50px;
-    padding:16px;
+    padding:12px 16px;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -9,17 +8,27 @@
 
 .paging-right{
     display:flex;
-    width:350px;
-    justify-content: space-between;
+    gap:16px;
 }
-.record-in-page{
-    width:200px;
+.page-limit{
+    min-width:210px;
 }
 
-.page-number{
-    width:130px;
+.page-button{
     display:flex;
-    justify-content: space-between;
+    gap:6px;
     align-items: center;
-    padding:0 16px;
+}
+.btn-prev, .btn-page-num, .btn-next {
+    border:none;
+    background: none;
+    cursor:pointer;
+}
+.btn-page-num{
+    width:20px;
+    height:20px;
+    text-align: center;
+}
+.btn-page-num:focus{
+    border:1px solid #E0E0E0;
 }

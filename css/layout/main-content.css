@@ -1,15 +1,16 @@
 .main-content {
     background-color: #EEEEEE;
-    float:left;
-    width:calc(100% - 200px);
     height:calc(100vh - 56px);
-    padding: 0 20px;
-    overflow:auto;
+    padding: 0 24px;
 }
 
+
+/* CONTENT HEADER */
+
 .content-header {
-    padding: 25px 0 30px 0;
+    padding: 24px 0 24px 0;
     display:flex;
+    align-items: center;
     justify-content: space-between;
 }
 .content-title {
@@ -17,27 +18,24 @@
     font-weight: 700;
 }
 
+/* CONTENT BODY */
+
 .content-body {
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    background-color: #fff;
+    background-color: white;
+    padding:0 16px;
 }
 
 .toolbar {
-    padding: 16px;
+    padding: 16px 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap:16px;
 }
 
-.refresh-button {
-    cursor: pointer;
-}
-
 .search-area {
     position: relative;
+    width:260px;
 }
 
 .icon-search {
@@ -48,11 +46,10 @@
     right: 8px;
     top: 8px;
 }
-.content-table {
-    padding: 0 16px;
-}
-.emp-table {
-    overflow:auto;
-    position:relative;
+
+.btn-refresh {
+    cursor: pointer;
+    border:none;
+    background-color: white;
 }
 

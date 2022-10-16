@@ -1,0 +1,126 @@
+.dialog-wrapper{
+    background: rgba(0, 0,0, 0.4);
+    display:none;
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    z-index:1000;
+    padding:24px;
+}
+
+
+.dialog{
+    background-color: #fff;
+    position:absolute;
+    padding:0 24px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.dialog-add-emp{
+    width:900px;
+}
+
+
+
+
+/* HEADER */
+
+.dialog-header {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top:24px;
+}
+
+.dialog-title {
+    font-size:24px;
+    font-weight: 700;
+}
+.dialog-header-left{
+    display:flex;
+    gap:30px;
+}
+.dialog-header-right{
+    display:flex;
+    gap:8px;
+}
+
+
+/* CONTENT */
+
+.dialog-content, .dialog-content-left, .dialog-content-right, .dialog-content-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+
+}
+.dialog-content{
+    margin:24px 0;
+}
+
+
+.w-24{
+    width:24%;
+}
+.w-39{
+    width:39%;
+}
+.w-59{
+    width:59%;
+}
+.w-100{
+    width:100%;
+}
+.w-49{
+    width:49%;
+}
+
+
+/* FOOTER */
+
+.dialog-footer {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:12px 0;
+    border-top:1px solid #E0E0E0;
+}
+.dialog-footer .btn-action {
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+
+
+/* ALERT */
+
+.alert{
+    z-index:1001;
+}
+
+.alert-dialog{
+    width:400px;
+}
+
+.alert-content{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:24px;
+    flex-wrap: nowrap;
+}
+.alert-content .content{
+    flex:1;
+}
+
+.alert-danger-footer{
+    justify-content: center;
+}
+.alert-warning-exist-footer{
+    justify-content: flex-end;
+}

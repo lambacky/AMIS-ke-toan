@@ -1,14 +1,33 @@
 .dropdown{
+    position:relative;
 }
 
 .dropdown-list{
     display: none;
     border:1px solid #E0E0E0;
     position:absolute;
+    right:0;
+    background-color: #fff;
 }
 .dropdown-item {
-    background: white;
     color:black;
-    padding:5px 5px;
-    width:150px;
+    padding:8px 0 8px 12px;
+    width:130px;
+    height:30px;
+    cursor:pointer;
+    text-align:left;
 }
+.dropdown-item:hover {
+    background-color: #E0E0E0;
+    color:#50B83C;
+}
+.dropdown-button{
+    outline:none;
+    border:none;
+    background-color: inherit;
+    cursor:pointer;
+}
+.dropdown-button:focus{
+    border: 1px solid blue;
+}
+

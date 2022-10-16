@@ -1,11 +1,10 @@
 .header {
-    float:left;
     height:56px;
-    width:calc(100% - 200px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
+    background-color: white;
 }
 
 .navbar-left, .navbar-right, .navbar-branch, .navbar-user {
@@ -22,12 +21,17 @@
 }
 
 .branch-name, .user-name {
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .user-image img {
     width: 32px;
     height: 32px;
     border-radius: 50%;
+}
+
+@media screen and (max-width: 1280px) {
+    .header .icon-three-stripes {
+        display:none;
+    }
 }
