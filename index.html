@@ -101,172 +101,65 @@
     <div class="main-content">
         <div class="content-header">
             <div class="content-title">Nhân viên</div>
-            <button class="btn btn-add-emp" onclick = "openForm()">Thêm mới nhân viên</button>
+            <button id="btnAddEmployee" class="btn btn-add-emp">Thêm mới nhân viên</button>
         </div>
         
         <div class="content-body">
             <div class="toolbar">
-                <div class="search-area">
-                    <input type="text" class="input input-search search-emp" placeholder="Tìm theo mã, tên nhân viên" />
-                    <div class="icon icon-search"></div>
+                <div class="toolbar-left">
+                    <button id="btnDelete" class="btn btn-delete" disabled>Xóa</button>
                 </div>
-                <button class="icon btn-refresh icon-refresh"></button>
+                <div class="toolbar-right">
+                    <div class="search-area">
+                        <input type="text" class="input input-search search-emp" placeholder="Tìm theo mã, tên nhân viên" />
+                        <div class="icon icon-search"></div>
+                    </div>
+                    <button id="btnRefresh" class="icon btn-refresh icon-refresh"></button>
+                </div>
             </div>
 
             <div class="table-wrapper">
-                <table id="emp-table">
+                <table id="empTable">
                     <thead>
                         <tr>
                             <th>
-                                <input class="input-checkbox" type="checkbox">
+                                <input id="checkboxAll" class="input-checkbox" type="checkbox">
                             </th>
                             <th style="min-width:150px">MÃ NHÂN VIÊN</th>
                             <th style="min-width:170px">TÊN NHÂN VIÊN</th>
-                            <th style="min-width:100px">GIỚI TÍNH</th>
+                            <th style="min-width:105px">GIỚI TÍNH</th>
                             <th class="date" style="min-width:120px">NGÀY SINH</th>
                             <th title="Số chứng minh thư nhân dân" style="min-width:150px">SỐ CMND</th>
-                            <th style="min-width:150px">CHỨC DANH</th>
+                            <th style="min-width:140px">CHỨC DANH</th>
                             <th style="min-width:200px">TÊN ĐƠN VỊ</th>
                             <th style="min-width:150px">SỐ TÀI KHOẢN</th>
                             <th style="min-width:300px">TÊN NGÂN HÀNG</th>
                             <th title="Chi nhánh tài khoản ngân hàng" style="min-width:300px">CHI NHÁNH TK NGÂN HÀNG</th>
-                            <th id="col-12-header" class="function" style="min-width:120px">CHỨC NĂNG</th>
+                            <th class="function" style="min-width:120px">CHỨC NĂNG</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <input class="input-checkbox" type="checkbox">
-                            </td>
-                            <td>01234</td>
-                            <td>Vũ Tùng Lâm</td>
-                            <td>Nam</td>
-                            <td class="date">18/05/2000</td>
-                            <td>0123456789</td>
-                            <td>Nhân viên</td>
-                            <td>Tài chính doanh nghiệp</td>
-                            <td>0123456789</td>
-                            <td>VietinBank</td>
-                            <td>8 Duy Tân, Cầu Giấy, Hà Nội</td>
-                            <td>
-                                <div class="table-function">
-                                    <div class="modify" onclick="modifyForm()">Sửa</div>
-                                    <div class="dropdown context-menu">
-                                        <div class="icon dropdown-button icon-arrow-down-blue"></div>
-                                        <div id="dropdown-list" class="dropdown-list">
-                                            <div class="dropdown-item">Nhân bản</div>
-                                            <div class="dropdown-item">Xóa</div>
-                                            <div class="dropdown-item">Ngưng sử dụng</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="input-checkbox" type="checkbox">
-                            </td>
-                            <td>01234</td>
-                            <td>Vũ Tùng Lâm</td>
-                            <td>Nam</td>
-                            <td class="date">18/05/2000</td>
-                            <td>0123456789</td>
-                            <td>Nhân viên</td>
-                            <td>Tài chính doanh nghiệp</td>
-                            <td>0123456789</td>
-                            <td>VietinBank</td>
-                            <td>8 Duy Tân, Cầu Giấy, Hà Nội</td>
-                            <td>
-                                <div class="table-function">
-                                    <div class="modify" onclick="modifyForm()">Sửa</div>
-                                    <div class="dropdown context-menu">
-                                        <div class="icon dropdown-button icon-arrow-down-blue"></div>
-                                        <div id="dropdown-list" class="dropdown-list">
-                                            <div class="dropdown-item">Nhân bản</div>
-                                            <div class="dropdown-item">Xóa</div>
-                                            <div class="dropdown-item">Ngưng sử dụng</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="input-checkbox" type="checkbox">
-                            </td>
-                            <td>01234</td>
-                            <td>Vũ Tùng Lâm</td>
-                            <td>Nam</td>
-                            <td class="date">18/05/2000</td>
-                            <td>0123456789</td>
-                            <td>Nhân viên</td>
-                            <td>Tài chính doanh nghiệp</td>
-                            <td>0123456789</td>
-                            <td>VietinBank</td>
-                            <td>8 Duy Tân, Cầu Giấy, Hà Nội</td>
-                            <td>
-                                <div class="table-function">
-                                    <div class="modify" onclick="modifyForm()">Sửa</div>
-                                    <div class="dropdown context-menu">
-                                        <div class="icon dropdown-button icon-arrow-down-blue"></div>
-                                        <div class="dropdown-list">
-                                            <div class="dropdown-item">Nhân bản</div>
-                                            <div class="dropdown-item">Xóa</div>
-                                            <div class="dropdown-item">Ngưng sử dụng</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="input-checkbox" type="checkbox">
-                            </td>
-                            <td>01234</td>
-                            <td>Vũ Tùng Lâm</td>
-                            <td>Nam</td>
-                            <td class="date">18/05/2000</td>
-                            <td>0123456789</td>
-                            <td>Nhân viên</td>
-                            <td>Tài chính doanh nghiệp</td>
-                            <td>0123456789</td>
-                            <td>VietinBank</td>
-                            <td>8 Duy Tân, Cầu Giấy, Hà Nội</td>
-                            <td>
-                                <div class="table-function">
-                                    <div class="modify" onclick="modifyForm()">Sửa</div>
-                                    <div class="dropdown context-menu">
-                                        <div class="icon dropdown-button icon-arrow-down-blue"></div>
-                                        <div class="dropdown-list">
-                                            <div class="dropdown-item">Nhân bản</div>
-                                            <div class="dropdown-item">Xóa</div>
-                                            <div class="dropdown-item">Ngưng sử dụng</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="paging">
                 <div class="paging-left">
-                    <div class="record-sum">Tổng số: <b>3</b> bản ghi</div>
+                    <div class="record-sum">Tổng số: <b id="totalNumber"></b> bản ghi</div>
                 </div>
                 <div class="paging-right">
                     <div class="page-limit">
                         <div class="combobox">            
-                            <input class="input combobox-input" type="text" readonly>
+                            <input class="input combobox-input" type="text" value="10 bản ghi trên 1 trang" readonly>
                             <div class="combobox-button">
                                 <div class="icon icon-arrow-dropdown"></div>
                             </div>
-                            <div class="combobox-data limit-number">
-                                <div class="data-item">10 bản ghi trên 1 trang</div>
-                                <div class="data-item">20 bản ghi trên 1 trang</div>
-                                <div class="data-item">30 bản ghi trên 1 trang</div>
-                                <div class="data-item">50 bản ghi trên 1 trang</div>
-                                <div class="data-item">100 bản ghi trên 1 trang</div>
+                            <div id="limitNumberList" class="combobox-data limit-number">
+                                <div class="data-item checked" value="10">10 bản ghi trên 1 trang</div>
+                                <div class="data-item" value="20">20 bản ghi trên 1 trang</div>
+                                <div class="data-item" value="30">30 bản ghi trên 1 trang</div>
+                                <div class="data-item" value="50">50 bản ghi trên 1 trang</div>
+                                <div class="data-item" value="100">100 bản ghi trên 1 trang</div>
                             </div>
                         </div>
                     </div> 
@@ -284,11 +177,11 @@
 
     <!-- FORM DIALOG -->
 
-    <div id="dialog-wrapper" class="dialog-wrapper">
+    <div id="formDialog" class="dialog-wrapper">
         <div class="dialog dialog-add-emp">
             <div class="dialog-header">
                 <div class="dialog-header-left">
-                    <div id="dialog-title" class="dialog-title"></div>
+                    <div id="formTitle" class="dialog-title"></div>
                     <div class="input-checkbox-wrapper">
                         <input class="input-checkbox" type="checkbox">
                         <label class="input-checkbox-label">Là khách hàng</label>
@@ -300,113 +193,115 @@
                 </div>
                 <div class="dialog-header-right">
                     <div class="icon icon-help" title="Trợ giúp"></div>
-                    <div class="icon icon-close" title="Thoát" onclick="closeForm()"></div>
+                    <div id="btnClose" class="icon icon-close btn-close" title="Thoát"></div>
                 </div>
             </div>
-            <div class="dialog-content">
-                <div class="dialog-content-left w-49">
+            <form id="employeeForm" class="dialog-body">
+                <div class="dialog-body-left w-49">
                     <div class="input-wrapper w-39" >
-                        <label class="input-label">Mã <span class="input-require">*</span></label>
-                        <input id="emp-id" type="text" class="input">
+                        <label class="input-label">Mã <span class="require-mark">*</span></label>
+                        <input id="employeeCode" type="text" required class="required input" name="EmployeeCode" tabindex="1">
+                        <span class="input-error-mess">&lt;Mã&gt; không được để trống</span>
                     </div>
                     <div class="input-wrapper w-59">
-                        <label class="input-label">Tên <span class="input-require">*</span></label>
-                        <input type="text" class="input">
+                        <label class="input-label">Tên <span class="require-mark">*</span></label>
+                        <input id="employeeName" type="text" required class="required input" name="EmployeeName" tabindex="2">
+                        <span class="input-error-mess">&lt;Tên&gt; không được để trống</span>
                     </div>
-                    <div class="input-wrapper w-100">
-                        <label class="input-label">Đơn vị <span class="input-require">*</span></label>
+                    <div class="input-wrapper w-100" style="overflow:visible">
+                        <label class="input-label">Đơn vị <span class="require-mark">*</span></label>
                         <div class="combobox">
-                            <input class="input combobox-input" type="text" disabled>
+                            <input id="departmentId" type="hidden" name="DepartmentId">
+                            <input id="departmentName" required class=" required input combobox-input" type="text" name="DepartmentName" readonly tabindex="7">
+                            <span class="input-error-mess">&lt;Đơn vị&gt; không được để trống</span>
                             <div class="combobox-button">
                                 <div class="icon icon-arrow-dropdown"></div>
                             </div>
-                            <div class="combobox-data unit">
-                                <div class="data-item">Tài chính doanh nghiệp</div>
-                                <div class="data-item">Hành chính sự nghiệp</div>
-                                <div class="data-item">Quản trị kinh doanh</div>
-                                <div class="data-item">Giải pháp bán lẻ</div>
-                                <div class="data-item">Nhân sự điều hành</div>
+                            <div id="departmentList" class="combobox-data unit">
                             </div>
                         </div>
                     </div>
                     <div class="input-wrapper w-100">
                         <label class="input-label">Chức danh</label>
-                        <input type="text" class="input">
+                        <input id="employeePosition" type="text" class="input" name="EmployeePosition" tabindex="10">
                     </div>
                 </div>
-                <div class="dialog-content-right w-49">
+                <div class="dialog-body-right w-49">
                     <div class="input-wrapper w-39">
                         <label class="input-label">Ngày sinh</label>
-                        <input type="date" class="input">
+                        <input id="dateOfBirth" type="date" class="input input-date" name="DateOfBirth" tabindex="3">
+                        <span class="input-error-mess">&lt;Ngày sinh&gt; không được lớn hơn hiện tại</span>
                     </div>
                     <div class="input-wrapper w-59">
                         <label class="input-label">Giới tính</label>
                         <div class="input-checkbox-list gender-list">
                             <div class="input-checkbox-wrapper">
-                                <input class="input-checkbox" type="radio" name="gender" checked>
+                                <input class="input-checkbox" type="radio" value="1" name="Gender" checked tabindex="4">
                                 <label class="input-label">Nam</label>
                             </div>
                             <div class="input-checkbox-wrapper">
-                                <input class="input-checkbox" type="radio" name="gender" checked>
+                                <input class="input-checkbox" type="radio" value="0" name="Gender" tabindex="5">
                                 <label class="input-label">Nữ</label>
                             </div>
                             <div class="input-checkbox-wrapper">
-                                <input class="input-checkbox" type="radio" name="gender" checked>
+                                <input class="input-checkbox" type="radio" value="2" name="Gender" tabindex="6">
                                 <label class="input-label">Khác</label>
                             </div>
                         </div>
                     </div>
                     <div class="input-wrapper w-59" >
                         <label class="input-label" title="Số chứng minh nhân dân">Số CMND</label>
-                        <input type="text" class="input">
+                        <input id="indentityNumber" type="text" class="input" name="IdentityNumber" tabindex="8">
                     </div>
                     <div class="input-wrapper w-39">
                         <span class="input-label">Ngày cấp</span>
-                        <input type="date" class="input">
+                        <input id="identityDate" type="date" class="input input-date" name="IdentityDate" tabindex="9">
+                        <span class="input-error-mess">&lt;Ngày cấp&gt; không được lớn hơn hiện tại</span>
                     </div>
                     <div class="input-wrapper w-100">
                         <span class="input-label">Nơi cấp</span>
-                        <input type="text" class="input">
+                        <input id="identityPlace" type="text" class="input" name="IdentityPlace" tabindex="11">
                     </div>
                 </div>
-                <div class="dialog-content-bottom w-100">
+                <div class="dialog-body-bottom w-100">
                     <div class="input-wrapper w-100" >
                         <label class="input-label">Địa chỉ</label>
-                        <input type="text" class="input">
+                        <input id="address" type="text" class="input" name="Address" tabindex="12">
                     </div>
                     <div class="input-wrapper w-24" >
                         <label class="input-label" title="điện thoại di động">ĐT di động</label>
-                        <input type="text" class="input">
+                        <input id="telephoneNumber" type="text" class="input" name="TelephoneNumber" tabindex="13">
                     </div>
                     <div class="input-wrapper w-24" >
                         <label class="input-label" title="điện thoại cố định">ĐT cố định</label>
-                        <input type="text" class="input">
+                        <input id="phoneNumber" type="text" class="input" name="PhoneNumber" tabindex="14">
                     </div>
                     <div class="input-wrapper w-24" >
                         <label class="input-label">Email</label>
-                        <input type="text" class="input">
+                        <input id="email" type="text" class="input" name="Email" tabindex="15">
+                        <span class="input-error-mess">&lt;Email&gt; không đúng định dạng</span>
                     </div>
                     <div class="w-24"></div>
                     <div class="input-wrapper w-24" >
                         <label class="input-label">Tài khoản ngân hàng</label>
-                        <input type="text" class="input">
+                        <input id="bankAccountNumber" type="text" class="input" name="BankAccountNumber" tabindex="16">
                     </div>
                     <div class="input-wrapper w-24" >
                         <label class="input-label">Tên ngân hàng</label>
-                        <input type="text" class="input">
+                        <input id="bankName" type="text" class="input" name="BankName" tabindex="17">
                     </div>
                     <div class="input-wrapper w-24" >
                         <label class="input-label">Chi nhánh</label>
-                        <input type="text" class="input">
+                        <input id="bankBranchName" type="text" class="input" name="BankBranchName" tabindex="18">
                     </div>
                     <div class="w-24"></div>
                 </div>
-            </div>
+            </form>
             <div class="dialog-footer">
-                <button class="btn btn-secondary btn-cancel" onclick="closeForm()">Hủy</button>
+                <button class="btn btn-secondary btn-close" tabindex="21">Hủy</button>
                 <div class="btn-action">
-                    <button class="btn btn-secondary btn-store">Cất</button>
-                    <button class="btn btn-store-add">Cất và thêm</button>
+                    <button id="btnSave" class="btn btn-secondary btn-store" tabindex="20">Cất</button>
+                    <button class="btn btn-store-add" tabindex="19">Cất và thêm</button>
                 </div>
             </div>
         </div>
@@ -416,21 +311,21 @@
 
     <div class="dialog-wrapper alert alert-warning-exist">
         <div class="dialog alert-dialog">
-            <div class="dialog-content alert-content">
+            <div class="dialog-body alert-body">
                 <div class="icon icon-warning"></div>
-                <div class="content">Mã Nhân viên &lt;000579&gt; đã tồn tại trong hệ thông. Vui lòng kiểm tra lại.</div>
+                <div class="content-message">Mã Nhân viên &lt;000579&gt; đã tồn tại trong hệ thông. Vui lòng kiểm tra lại.</div>
             </div>
             <div class="dialog-footer alert-warning-exist-footer">
-                <button class="btn  btn-closr">Đóng</button>
+                <button class="btn  btn-close">Đóng</button>
             </div>
         </div>
     </div>
 
     <div class="dialog-wrapper alert alert-warning-delete">
         <div class="dialog alert-dialog">
-            <div class="dialog-content alert-content">
+            <div class="dialog-body alert-body">
                 <div class="icon icon-warning"></div>
-                <div class="content">Bạn thực sự muốn xóa Nhân viên &lt;000579&gt; không?</div>
+                <div class="content-message"></div>
             </div>
             <div class="dialog-footer alert-warning-delete-footer">
                 <button class="btn  btn-secondary btn-deny">Không</button>
@@ -441,9 +336,9 @@
 
     <div class="dialog-wrapper alert alert-danger">
         <div class="dialog alert-dialog">
-            <div class="dialog-content alert-content">
+            <div class="dialog-body alert-body">
                 <div class="icon icon-danger"></div>
-                <div class="content">Tên không được để trống</div>
+                <div class="content-message"></div>
             </div>
             <div class="dialog-footer alert-danger-footer">
                 <button class="btn btn-close">Đóng</button>
@@ -453,9 +348,9 @@
 
     <div class="dialog-wrapper alert alert-question">
         <div class="dialog alert-dialog">
-            <div class="dialog-content alert-content">
+            <div class="dialog-body alert-body">
                 <div class="icon icon-question"></div>
-                <div class="content">Dữ liệu đã bị thay đổi. Bạn muốn cất không?</div>
+                <div class="content-message">Dữ liệu đã bị thay đổi. Bạn muốn cất không?</div>
             </div>
             <div class="dialog-footer alert-question-footer">
                 <button class="btn btn-secondary btn-cancel">Hủy</button>
@@ -467,6 +362,12 @@
         </div>
     </div>
 
+    <!-- <div class="dropdown-list">
+        <div class="dropdown-item">Nhân bản</div>
+        <div class="dropdown-item">Xóa</div>
+        <div class="dropdown-item">Ngưng sử dụng</div>
+    </div> -->
+
 
     <!-- LOADING ICON -->
 
@@ -474,7 +375,8 @@
         <div class="icon-loading"></div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> -->
+    <script src="./js/jquery-3.6.1.min.js"></script>
     <script src="./js/EmployeePage.js"></script>
 </body>
 </html>

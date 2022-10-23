@@ -15,7 +15,7 @@
 }
 .content-title {
     font-size:24px;
-    font-weight: 700;
+    font-family: Noto-Sans-Bold;
 }
 
 /* CONTENT BODY */
@@ -26,11 +26,17 @@
 }
 
 .toolbar {
+    width:100%;
     padding: 16px 0;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    justify-content: space-between;
+
+}
+
+.toolbar-right{
+    display:flex;
     gap:16px;
+    align-items: center;
 }
 
 .search-area {
@@ -43,8 +49,8 @@
     height:20px;
     cursor: pointer;
     position: absolute;
-    right: 8px;
-    top: 8px;
+    right:8px;
+    top:8px;
 }
 
 .btn-refresh {

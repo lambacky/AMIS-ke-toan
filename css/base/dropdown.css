@@ -8,12 +8,13 @@
     position:absolute;
     right:0;
     background-color: #fff;
+    /* z-index:1000;
+    width:130px; */
 }
 .dropdown-item {
     color:black;
     padding:8px 0 8px 12px;
     width:130px;
-    height:30px;
     cursor:pointer;
     text-align:left;
 }

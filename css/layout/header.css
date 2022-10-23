@@ -21,7 +21,7 @@
 }
 
 .branch-name, .user-name {
-    font-weight: bold;
+    font-family: Noto-Sans-SemiBold;
 }
 
 .user-image img {

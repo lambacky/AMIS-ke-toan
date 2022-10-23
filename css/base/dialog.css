@@ -7,14 +7,13 @@
     left:0;
     bottom:0;
     z-index:1000;
-    padding:24px;
 }
 
 
 .dialog{
     background-color: #fff;
     position:absolute;
-    padding:0 24px;
+    padding:24px 24px 0 24px;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -33,12 +32,12 @@
     display:flex;
     align-items: center;
     justify-content: space-between;
-    padding-top:24px;
+    padding-bottom:24px;
 }
 
 .dialog-title {
     font-size:24px;
-    font-weight: 700;
+    font-family: Noto-Sans-Bold;
 }
 .dialog-header-left{
     display:flex;
@@ -52,16 +51,12 @@
 
 /* CONTENT */
 
-.dialog-content, .dialog-content-left, .dialog-content-right, .dialog-content-bottom{
+.dialog-body, .dialog-body-left, .dialog-body-right, .dialog-body-bottom{
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between;
 
 }
-.dialog-content{
-    margin:24px 0;
-}
-
 
 .w-24{
     width:24%;
@@ -107,14 +102,15 @@
     width:400px;
 }
 
-.alert-content{
+.alert-body{
+    margin-bottom:24px;
     display:flex;
     align-items: center;
     justify-content: flex-start;
     gap:24px;
     flex-wrap: nowrap;
 }
-.alert-content .content{
+.alert-body .content-message{
     flex:1;
 }
 

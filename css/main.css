@@ -13,7 +13,7 @@
 body {
     font-family: Noto-Sans-Regular;
     margin: 0;
-    font-size:13px;
+    font-size:14px;
     display:flex;
 }
 *{
@@ -25,4 +25,18 @@ body {
     src: url(../assets/fonts/notosans-regular.2cb88a13.woff2);
 }
 
+@font-face {
+    font-family: Noto-Sans-SemiBold;
+    src: url(../assets/fonts/notosans-semibold.df3e6dc4.woff2);
+}
+
+@font-face {
+    font-family: Noto-Sans-Bold;
+    src: url(../assets/fonts/notosans-bold.3ede5aff.woff2);
+}
+
+@font-face {
+    font-family: Noto-Sans-Italic;
+    src: url(../assets/fonts/notosans-italic.1c1aaac9.woff2);
+}
 

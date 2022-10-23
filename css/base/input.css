@@ -4,10 +4,14 @@
     display:flex;
     flex-direction: column;
     gap:8px;
+    position: relative;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
 .input-label{
-    font-weight:bold;
+    font-family:Noto-Sans-SemiBold;
 }
 
 .input {
@@ -19,9 +23,13 @@
     width:100%;
 }
 
+.input-search, .input-date{
+    padding-right:8px;
+}
+
 .input::placeholder {
     color: #9E9E9E;
-    font-style: italic;
+    font-family:Noto-Sans-Italic;
 }
 
 .input:hover {
@@ -33,15 +41,25 @@
 }
 
 
-.input-require {
+.require-mark {
     color: red;
     padding-left:2px;
 }
 
 .input-error, .input-error:focus {
-    border-color: red!important;
+    border-color: red
+}
+.input-error-mess{
+    display:none;
+    color:red;
+    position:absolute;
+    bottom:4px;
+    font-size:12px;
 }
 
+.combobox .input-error-mess{
+    bottom:-20px;
+}
 
 /* CHECKBOX INPUT */
 .input-checkbox-list{
@@ -59,4 +77,5 @@
 .input-checkbox {
     width:20px;
     height:20px;
+    accent-color:#409330;
 }

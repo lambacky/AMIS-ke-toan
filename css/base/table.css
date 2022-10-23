@@ -18,7 +18,7 @@ th, td{
     border-right: 1px solid #E0E0E0;
     border-left: 1px solid #E0E0E0;
     border-bottom: 1px solid #E0E0E0;
-    height:40px;
+    height:48px;
     text-align:left;
     padding: 0 16px;
 }
@@ -27,23 +27,22 @@ th{
     background-color: #EEEEEE;
     position:sticky;
     top:0;
+    font-family: Noto-Sans-SemiBold;
 }
 
 td{
     background-color: white;
 }
 
-th:nth-child(1), td:nth-child(1) {
+th:first-child, td:first-child {
     position:sticky;
     left:0;
 }
-/* th:nth-child(1),th:last-child{
-    z-index:2;
-} */
 th:last-child, td:last-child{
     position:sticky;
     right:0;
 }
+
 
 th.date, td.date, th.function {
     text-align:center;

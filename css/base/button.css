@@ -6,15 +6,13 @@
     border-radius: 4px;
     min-width: 80px;
     height:36px;
-    cursor:pointer;
 }
-.btn:hover {
+.btn:hover:not([disabled]) {
     background-color: #73C663;
     cursor:pointer;
 }
 .btn:focus {
     background-color: #409330;
-    cursor:pointer;
 }
 .btn:disabled{
     opacity:0.56;
@@ -25,7 +23,7 @@
     color:black;
     border: 1px solid #E6E6E6;
 }
-.btn-secondary:hover {
+.btn-secondary:hover:not([disabled]) {
     background-color:#EEEEEE;
 }
 .btn-secondary:focus {
