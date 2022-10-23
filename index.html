@@ -193,7 +193,7 @@
                 </div>
                 <div class="dialog-header-right">
                     <div class="icon icon-help" title="Trợ giúp"></div>
-                    <div id="btnClose" class="icon icon-close btn-close" title="Thoát"></div>
+                    <div id="btnEsc" class="icon icon-close" title="Thoát"></div>
                 </div>
             </div>
             <form id="employeeForm" class="dialog-body">
@@ -301,7 +301,7 @@
                 <button class="btn btn-secondary btn-close" tabindex="21">Hủy</button>
                 <div class="btn-action">
                     <button id="btnSave" class="btn btn-secondary btn-store" tabindex="20">Cất</button>
-                    <button class="btn btn-store-add" tabindex="19">Cất và thêm</button>
+                    <button id="btnSaveAdd" class="btn btn-store-add" tabindex="19">Cất và thêm</button>
                 </div>
             </div>
         </div>
@@ -316,7 +316,7 @@
                 <div class="content-message">Mã Nhân viên &lt;000579&gt; đã tồn tại trong hệ thông. Vui lòng kiểm tra lại.</div>
             </div>
             <div class="dialog-footer alert-warning-exist-footer">
-                <button class="btn  btn-close">Đóng</button>
+                <button class="btn btn-close" tabindex="1">Đóng</button>
             </div>
         </div>
     </div>
@@ -328,8 +328,8 @@
                 <div class="content-message"></div>
             </div>
             <div class="dialog-footer alert-warning-delete-footer">
-                <button class="btn  btn-secondary btn-deny">Không</button>
-                <button class="btn btn-confirm">Có</button>
+                <button class="btn btn-secondary btn-close btn-deny" tabindex="2">Không</button>
+                <button class="btn btn-confirm" tabindex="1">Có</button>
             </div>
         </div>
     </div>
@@ -341,7 +341,7 @@
                 <div class="content-message"></div>
             </div>
             <div class="dialog-footer alert-danger-footer">
-                <button class="btn btn-close">Đóng</button>
+                <button class="btn btn-close" tabindex="1">Đóng</button>
             </div>
         </div>
     </div>
@@ -353,21 +353,14 @@
                 <div class="content-message">Dữ liệu đã bị thay đổi. Bạn muốn cất không?</div>
             </div>
             <div class="dialog-footer alert-question-footer">
-                <button class="btn btn-secondary btn-cancel">Hủy</button>
+                <button class="btn btn-secondary btn-close" tabindex="3">Hủy</button>
                 <div class="btn-action">
-                    <button class="btn btn-secondary btn-deny">Không</button>
-                    <button class="btn btn-confirm">Có</button>
+                    <button class="btn btn-secondary btn-deny" tabindex="2">Không</button>
+                    <button class="btn btn-confirm" tabindex="1">Có</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- <div class="dropdown-list">
-        <div class="dropdown-item">Nhân bản</div>
-        <div class="dropdown-item">Xóa</div>
-        <div class="dropdown-item">Ngưng sử dụng</div>
-    </div> -->
-
 
     <!-- LOADING ICON -->
 
