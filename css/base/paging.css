@@ -19,16 +19,24 @@
     gap:6px;
     align-items: center;
 }
-.btn-prev, .btn-page-num, .btn-next {
+.btn-prev, .page-number, .btn-next {
     border:none;
     background: none;
+
+}
+.btn-prev:hover:not([disabled]),.btn-next:hover:not([disabled]),.page-number:hover{
     cursor:pointer;
 }
-.btn-page-num{
+.total-page{
+    display:flex;
+    gap:6px;
+}
+.page-number{
     width:20px;
     height:20px;
     text-align: center;
 }
-.btn-page-num:focus{
-    border:1px solid #E0E0E0;
+.selected{
+    border: 1px solid #E0E0E0;
+    font-family: Noto-Sans-SemiBold;
 }

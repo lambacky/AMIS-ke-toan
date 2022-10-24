@@ -111,7 +111,7 @@
                 </div>
                 <div class="toolbar-right">
                     <div class="search-area">
-                        <input type="text" class="input input-search search-emp" placeholder="Tìm theo mã, tên nhân viên" />
+                        <input id="inputSearch" type="text" class="input input-search search-emp" placeholder="Tìm theo mã, tên nhân viên" />
                         <div class="icon icon-search"></div>
                     </div>
                     <button id="btnRefresh" class="icon btn-refresh icon-refresh"></button>
@@ -145,27 +145,29 @@
 
             <div class="paging">
                 <div class="paging-left">
-                    <div class="record-sum">Tổng số: <b id="totalNumber"></b> bản ghi</div>
+                    <div class="record-sum">Tổng số: <b id="totalRecord"></b> bản ghi</div>
                 </div>
                 <div class="paging-right">
                     <div class="page-limit">
                         <div class="combobox">            
-                            <input class="input combobox-input" type="text" value="10 bản ghi trên 1 trang" readonly>
+                            <input id="pageSize" class="input combobox-input" type="text" value="10 bản ghi trên 1 trang" readonly>
                             <div class="combobox-button">
                                 <div class="icon icon-arrow-dropdown"></div>
                             </div>
-                            <div id="limitNumberList" class="combobox-data limit-number">
-                                <div class="data-item checked" value="10">10 bản ghi trên 1 trang</div>
-                                <div class="data-item" value="20">20 bản ghi trên 1 trang</div>
-                                <div class="data-item" value="30">30 bản ghi trên 1 trang</div>
-                                <div class="data-item" value="50">50 bản ghi trên 1 trang</div>
-                                <div class="data-item" value="100">100 bản ghi trên 1 trang</div>
+                            <div id="pageSizeList" class="combobox-data page-size-list">
+                                <div class="data-item checked">10 bản ghi trên 1 trang</div>
+                                <div class="data-item">20 bản ghi trên 1 trang</div>
+                                <div class="data-item">30 bản ghi trên 1 trang</div>
+                                <div class="data-item">50 bản ghi trên 1 trang</div>
+                                <div class="data-item">100 bản ghi trên 1 trang</div>
                             </div>
                         </div>
                     </div> 
                     <div class="page-button">
                         <button class="btn-prev">Trước</button>
-                        <button class="btn-page-num">1</button>
+                        <div id="totalPage" class="total-page" data-currentpage="1">
+                            <div class="page-number selected">1</div>
+                        </div>
                         <button class="btn-next">Sau</button>
                     </div>                  
                 </div>
@@ -217,7 +219,7 @@
                             <div class="combobox-button">
                                 <div class="icon icon-arrow-dropdown"></div>
                             </div>
-                            <div id="departmentList" class="combobox-data unit">
+                            <div id="departmentList" class="combobox-data department-list">
                             </div>
                         </div>
                     </div>
@@ -328,7 +330,7 @@
                 <div class="content-message"></div>
             </div>
             <div class="dialog-footer alert-warning-delete-footer">
-                <button class="btn btn-secondary btn-close btn-deny" tabindex="2">Không</button>
+                <button class="btn btn-secondary btn-close" tabindex="2">Không</button>
                 <button class="btn btn-confirm" tabindex="1">Có</button>
             </div>
         </div>
