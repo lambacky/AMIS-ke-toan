@@ -17,6 +17,7 @@
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+    border-radius:4px;
 }
 
 .dialog-add-emp{
@@ -51,28 +52,35 @@
 
 /* CONTENT */
 
-.dialog-body, .dialog-body-left, .dialog-body-right, .dialog-body-bottom{
+.dialog-body-top{
     display:flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
+    gap:24px;
 
 }
 
-.w-24{
-    width:24%;
-}
-.w-39{
-    width:39%;
-}
-.w-59{
-    width:59%;
-}
-.w-100{
+.row-flex{
     width:100%;
+    display:flex;
+    gap:8px;
 }
-.w-49{
-    width:49%;
+
+.flex-1{
+    flex:1;
 }
+
+.w-25{
+    width:25%;
+}
+.w-40{
+    width:40%;
+}
+.w-50{
+    width:50%;
+}
+.w-60{
+    width:60%;
+}
+
 
 
 /* FOOTER */
@@ -114,7 +122,7 @@
     flex:1;
 }
 
-.alert-danger-footer{
+.alert-danger-footer,.alert-success-footer{
     justify-content: center;
 }
 .alert-warning-exist-footer{

@@ -29,7 +29,7 @@
 }
 .total-page{
     display:flex;
-    gap:6px;
+    gap:8px;
 }
 .page-number{
     width:20px;

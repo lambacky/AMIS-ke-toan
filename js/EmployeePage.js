@@ -78,14 +78,12 @@ class EmployeePage {
             $(document).on('click','.modify',function(){
                 self.modifyForm($(this));
             });
-
-            //double click cho hàng của bảng danh sách nhân viên
-            $(document).on('dblclick','tbody tr td:not(:first-child,:last-child)',function(){
-                self.modifyForm($(this));
-            });
             
             //nút refresh dữ liệu bảng danh sách nhân viên
-            $(document).on('click','#btnRefresh',self.loadData);
+            $('#btnRefresh').click(function(){
+                $('#totalPage').data('currentpage','1');
+                self.loadData();
+            });
 
             //input tìm kiếm
             $('#inputSearch').keyup(function(){
@@ -112,6 +110,10 @@ class EmployeePage {
             //xử lí dropdown
             self.handleDropdown();
 
+            //xử lí bảng
+            self.handleTable();
+            
+
         } catch (error) {
             console.log(error);
         }
@@ -125,6 +127,9 @@ class EmployeePage {
      */
     loadData(){
         try {
+            if($('#loading').is(':hidden')){
+                $('#loading').show();
+            }
             let self=this;  
             //lấy dữ liệu phân trang và tìm kiếm
             let pageSize = $('#pageSize').val().split(' ')[0];
@@ -137,6 +142,7 @@ class EmployeePage {
                 type: 'GET',
                 url: `https://amis.manhnv.net/api/v1/Employees/filter?pageSize=${pageSize}&pageNumber=${pageNumber}&employeeFilter=${employeeFilter}`,
                 success: function (response) {
+                    $('#loading').hide();
                     $('tbody').empty();
                     for(const emp of response.Data){
                         var dob = emp.DateOfBirth;
@@ -186,13 +192,24 @@ class EmployeePage {
                         $(trHTML).data('employee', emp);
                         $('tbody').append(trHTML);
                     }
-                    //xử lí bảng
-                    self.handleTable();
 
+                    $('#checkboxAll').prop('checked',false);
+
+                    // xử lí z-index của cột cuối cùng và của hàng đầu tiên
+                    var lastCells = $('tbody tr td:last-child');
+                    var headCells = $('thead tr th');
+                    var z = lastCells.length;
+                    headCells.css('z-index',z);
+                    headCells.first().css('z-index',z+1);
+                    lastCells.each(function(){
+                        $(this).css('z-index',z-1);
+                        z--;
+                    });
                     //xử lí dữ liệu phân trang sau khi load dữ liệu bảng
                     self.showPagingData(response,pageNumber);
                 },
                 error: function (response) {
+                    $('#loading').hide();
                     console.log(response);
                 },
             });
@@ -227,23 +244,26 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (24/10/2022) 
      */
     showPagingData(response,pageNumber){
-        // hiển thị tổng số bản ghi
-        $('#totalRecord').text(response.TotalRecord);
+        try {
+            // hiển thị tổng số bản ghi
+            $('#totalRecord').text(response.TotalRecord);
 
-        //hiển thị số trang
-        $('.page-number:not(:first-child)').remove();
-        for(let i=2;i<=response.TotalPage;i++){
-            let pageNumberHTML = $(`<div class="page-number">${i}</div>`);
-            $('#totalPage').append(pageNumberHTML);
+            //hiển thị số trang
+            $('.page-number:not(:first-child)').remove();
+            for(let i=2;i<=response.TotalPage;i++){
+                let pageNumberHTML = $(`<div class="page-number">${i}</div>`);
+                $('#totalPage').append(pageNumberHTML);
+            }
+
+            //xử lí việc disable nút tăng và giảm trang
+            $('.btn-prev').prop('disabled',(pageNumber==1) ? true : false);
+            $('.btn-next').prop('disabled',(pageNumber==response.TotalPage)? true : false);
+
+            //thêm class selected cho trang được chọn
+            $('.page-number').eq(pageNumber-1).addClass('selected');
+        } catch (error) {
+            console.log(error);
         }
-
-        //xử lí việc disable nút tăng và giảm trang
-        $('.btn-prev').prop('disabled',(pageNumber==1) ? true : false);
-        $('.btn-next').prop('disabled',(pageNumber==response.TotalPage)? true : false);
-
-        //thêm class selected cho trang được chọn
-        $('.page-number').eq(pageNumber-1).addClass('selected');
-        
     }
 
     /**
@@ -251,79 +271,83 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (19/10/2022)
      */
     validateData(){
-        let self=this;
-        var isValid = true;
-        var inputValidates = [];
-        // dữ liệu bắt buộc nhập
-        var inputRequireds = $('.required');
-        inputRequireds.each(function(){
-            let input = $(this);
-            inputValidates.push(input);
-            let value = input.val();
-            let errorMess = input.next();
-            if(!value){
-                input.addClass('input-error');
-                errorMess.show();
-                errorMess.prop('title',errorMess.text());
-                isValid = false;
-            }
-            else{
-                input.removeClass('input-error');
-                errorMess.hide();
-    
-            }
-        });
-    
-        //ngày tháng
-        var inputDates = $('.input-date');
-        var currentDate = (new Date()).toISOString().split('T')[0];
-        inputDates.each(function(){
-            let input = $(this);
-            inputValidates.push(input);
-            let value = input.val();
-            let errorMess = input.next();
-            if(value > currentDate){
-                input.addClass('input-error');
-                errorMess.show();
-                errorMess.prop('title',errorMess.text());
-                isValid = false;
-            }
-            else{
-                input.removeClass('input-error');
-                errorMess.hide();
-            }
-        });
-    
-        //kiểm tra đúng định dạng(email)
-        var inputEmail = $('#email');
-        inputValidates.push(inputEmail);
-        var mailErrorMess = inputEmail.next();
-        var mailValue = inputEmail.val();
-        var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if(mailValue){
-            if(!mailValue.match(mailFormat)){
-                inputEmail.addClass('input-error');
-                mailErrorMess.show();
-                errorMess.prop('title',errorMess.text());
-                isValid = false;
-            }
-            else{
-                inputEmail.removeClass('input-error');
-                mailErrorMess.hide();
-            }
-        }
+        try {
+            let self=this;
+            var isValid = true;
+            var inputValidates = [];
+            // dữ liệu bắt buộc nhập
+            var inputRequireds = $('.required');
+            inputRequireds.each(function(){
+                let input = $(this);
+                inputValidates.push(input);
+                let value = input.val();
+                let errorMess = input.next();
+                if(!value){
+                    input.addClass('input-error');
+                    errorMess.show();
+                    errorMess.prop('title',errorMess.text());
+                    isValid = false;
+                }
+                else{
+                    input.removeClass('input-error');
+                    errorMess.hide();
         
-        //hiện dialog lỗi
-        $.each(inputValidates,function(){
-            let input = $(this);
-            let errorMess = input.next();
-            if (errorMess.css('display')=='block'){
-                self.showAlertDanger(errorMess.text());
-                return false;
+                }
+            });
+        
+            //ngày tháng
+            var inputDates = $('.input-date');
+            var currentDate = (new Date()).toISOString().split('T')[0];
+            inputDates.each(function(){
+                let input = $(this);
+                inputValidates.push(input);
+                let value = input.val();
+                let errorMess = input.next();
+                if(value > currentDate){
+                    input.addClass('input-error');
+                    errorMess.show();
+                    errorMess.prop('title',errorMess.text());
+                    isValid = false;
+                }
+                else{
+                    input.removeClass('input-error');
+                    errorMess.hide();
+                }
+            });
+        
+            //kiểm tra đúng định dạng(email)
+            var inputEmail = $('#email');
+            inputValidates.push(inputEmail);
+            var mailErrorMess = inputEmail.next();
+            var mailValue = inputEmail.val();
+            var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(mailValue){
+                if(!mailValue.match(mailFormat)){
+                    inputEmail.addClass('input-error');
+                    mailErrorMess.show();
+                    errorMess.prop('title',errorMess.text());
+                    isValid = false;
+                }
+                else{
+                    inputEmail.removeClass('input-error');
+                    mailErrorMess.hide();
+                }
             }
-        });
-    
-        return isValid;
+            
+            //hiện dialog lỗi
+            $.each(inputValidates,function(){
+                let input = $(this);
+                let errorMess = input.next();
+                if (errorMess.css('display')=='block'){
+                    self.showAlert($('.alert-danger'),errorMess.text());
+                    return false;
+                }
+            });
+        
+            return isValid;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     /**
@@ -395,10 +419,10 @@ class EmployeePage {
                     dataType: 'json',
                     contentType: 'application/json',
                     success: function (response) {
-                        $('#loading').hide();
+                        self.showAlert($('.alert-success'),'Thêm nhân viên thành công');
                         $('#formDialog').find('.btn-close').click();
                         if(self.formMode==FormMode.SaveAndAdd){
-                            self.openForm("Thêm khách hàng");
+                            self.openForm();
                         }
                         $('#totalPage').data('currentpage','1');
                         self.loadData();
@@ -408,7 +432,7 @@ class EmployeePage {
                         switch (response.status) {
                             case 400:
                                 let errorMessage = response.responseJSON.userMsg;
-                                self.showAlertDanger(errorMessage);
+                                self.showAlert($('.alert-danger'),errorMessage);
                                 break;
                             default:
                                 break;
@@ -427,45 +451,49 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (23/10/2022)
      */
     editData(){
-        let self = this;
-        // 2. Validation dữ liệu
-        let isValid = this.validateData();
-        if (isValid) {
-            // 3. Xử lý dữ liệu
-            let formData = $('#employeeForm').serializeArray().reduce(function (obj, item) {
-                obj[item.name] = item.value;
-                return obj;
-            }, {});
-            let employee = $('#formDialog').data('employee');
-            employee = { ...employee, ...formData };
-            $('#loading').show();
-            $.ajax({
-                type: 'PUT',
-                url: `https://amis.manhnv.net/api/v1/Employees/${employee.EmployeeId}`,
-                data: JSON.stringify(employee),
-                dataType: 'json',
-                contentType: 'application/json',
-                success: function (response) {
-                    $('#loading').hide();
-                    $('#formDialog').find('.btn-close').click();
-                    if(self.formMode==FormMode.EditAndAdd){
-                        self.openForm();
-                    }
-                    self.loadData();
-                },
-                error: function (response) {
-                    $('#loading').hide();
-                    // Show dialog nếu có lỗi
-                    switch (response.status) {
-                        case 400:
-                            let errorMessage = response.responseJSON.userMsg;
-                            self.showAlertDanger(errorMessage);
-                            break;
-                        default:
-                            break;
-                    }
-                },
-            });
+        try {
+            let self = this;
+            //Validate dữ liệu
+            let isValid = this.validateData();
+            if (isValid) {
+                //Xử lí dữ liệu
+                let formData = $('#employeeForm').serializeArray().reduce(function (obj, item) {
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
+                let employee = $('#formDialog').data('employee');
+                employee = { ...employee, ...formData };
+                $('#loading').show();
+                $.ajax({
+                    type: 'PUT',
+                    url: `https://amis.manhnv.net/api/v1/Employees/${employee.EmployeeId}`,
+                    data: JSON.stringify(employee),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function (response) {
+                        self.showAlert($('.alert-success'),'Sửa nhân viên thành công');
+                        $('#formDialog').find('.btn-close').click();
+                        if(self.formMode==FormMode.EditAndAdd){
+                            self.openForm();
+                        }
+                        self.loadData();
+                    },
+                    error: function (response) {
+                        $('#loading').hide();
+                        // Show dialog nếu có lỗi
+                        switch (response.status) {
+                            case 400:
+                                let errorMessage = response.responseJSON.userMsg;
+                                self.showAlert($('.alert-danger'),errorMessage);
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                });
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -474,14 +502,14 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (23/10/2022)
      */
     deleteData(){
-        let id = $('.alert-warning-delete').data('empid');
-        let self=this;
         try {
+            let id = $('.alert-warning-delete').data('empid');
+            let self=this;
             $.ajax({
                 type: 'DELETE',
                 url: `https://amis.manhnv.net/api/v1/Employees/${id}`,
                 success: function (response) {
-                    $('#loading').hide();
+                    self.showAlert($('.alert-success'),'Xóa nhân viên thành công');
                     $('#totalPage').data('currentpage','1');
                     self.loadData();
                 },
@@ -529,9 +557,7 @@ class EmployeePage {
                     $('#loading').hide();
                     console.log(response);
                 },
-            });
-            
-            
+            }); 
         } catch (error) {
             console.log(error);
         }
@@ -544,44 +570,48 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (22/10/2022)
      */
     modifyForm(cell) {
-        let self = this;
-        
-        //mở form dialog
-        self.formMode = FormMode.Edit;
-        $('#formDialog').show();
-        $('#formTitle').text("Sửa khách hàng");
-        $('#employeeCode').focus();
+        try {
+            let self = this;
+            
+            //mở form dialog
+            self.formMode = FormMode.Edit;
+            $('#formDialog').show();
+            $('#formTitle').text("Sửa khách hàng");
+            $('#employeeCode').focus();
 
-        //hiện dữ liệu của nhân viên lên dialog
+            //hiện dữ liệu của nhân viên lên dialog
 
-        //lấy dữ liệu nhân viên từ bảng
-        let employee = cell.parents('tr').data('employee');
+            //lấy dữ liệu nhân viên từ bảng
+            let employee = cell.parents('tr').data('employee');
 
-        var inputs = $('#employeeForm').find('input:not([name="Gender"])');
-        // Gán value cho các input
-        for (let input of inputs) {
-            let name = $(input).attr('name');
-            let value = employee[name];
-            if ($(input).attr('type') == 'date' && value) {
-                $(input).val(value.split('T')[0]);
-            } else {
-                $(input).val(value);
-            }
-        }
-        // Gán value cho input Gender
-        $('input[name="Gender"]').each(function () {
-            if (employee.Gender!= null) {
-                if ($(this).val() == employee.Gender.toString()) {
-                    $(this).prop('checked', true);
+            var inputs = $('#employeeForm').find('input:not([name="Gender"])');
+            // Gán value cho các input
+            for (let input of inputs) {
+                let name = $(input).attr('name');
+                let value = employee[name];
+                if ($(input).attr('type') == 'date' && value) {
+                    $(input).val(value.split('T')[0]);
+                } else {
+                    $(input).val(value);
                 }
             }
-        });
-        let formData = $('#employeeForm').serializeArray().reduce(function (obj, item) {
-            obj[item.name] = item.value;
-            return obj;
-        }, {});
-        $('#formDialog').data('formData', formData);
-        $('#formDialog').data('employee', employee);
+            // Gán value cho input Gender
+            $('input[name="Gender"]').each(function () {
+                if (employee.Gender!= null) {
+                    if ($(this).val() == employee.Gender.toString()) {
+                        $(this).prop('checked', true);
+                    }
+                }
+            });
+            let formData = $('#employeeForm').serializeArray().reduce(function (obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+            $('#formDialog').data('formData', formData);
+            $('#formDialog').data('employee', employee);
+        } catch (error) {
+            console.log(error);
+        }
     }
     
     /**
@@ -590,16 +620,21 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (20/10/2022) 
      */
     closeDialog(btnClose){
-        var dialog = btnClose.parents('.dialog-wrapper');     
-        dialog.hide();
+        try {
+            var dialog = btnClose.parents('.dialog-wrapper');     
+            dialog.hide();
 
-        //kiểm tra nếu dialog là form thông tin nhân viên
-        if(dialog.prop('id')=="formDialog"){
-            //reset form
-            dialog.find('.input-error').removeClass('input-error');
-            dialog.find('.input-error-mess').hide();
-            dialog.find('input[name="Gender"][value="1"]').prop('checked', true);
-            dialog.find('input:not([name="Gender"])').val('');
+            //kiểm tra nếu dialog là form thông tin nhân viên
+            if(dialog.prop('id')=="formDialog"){
+                //reset form
+                dialog.find('.input-error').removeClass('input-error');
+                dialog.find('.input-error-mess').hide();
+                dialog.find('input[name="Gender"][value="1"]').prop('checked', true);
+                dialog.find('input:not([name="Gender"])').val('');
+                dialog.find('.input-checkbox:not([name="Gender"])').prop('checked',false);
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
     
@@ -607,56 +642,29 @@ class EmployeePage {
      * Xử lí bảng
      * Author: Vũ Tùng Lâm (20/10/2022)
      */
-     handleTable(){
-        let self=this;
-        var tableCheckboxes = $('#empTable').find('.input-checkbox:not(#checkboxAll)');
-        var checkboxAll = $('#checkboxAll');
-        
-        // xử lí checkbox all của bảng
-        checkboxAll.change(function(){
-            self.handleCheckAll(tableCheckboxes,checkboxAll);
-        });
-    
-        //xử lí các checkbox của bảng
-        tableCheckboxes.change(function(){
-            self.anyCheckedBoxTable(tableCheckboxes,checkboxAll);
-        });
-    
-        // xử lí double click của hàng
-        
-    
-        // xử lí z-index của cột cuối cùng
-        var lastCells = $('tbody tr td:last-child');
-        var headCells = $('thead tr th');
-        var z = lastCells.length;
-        headCells.css('z-index',z);
-        headCells.first().css('z-index',z+1);
-        lastCells.each(function(){
-            $(this).css('z-index',z-1);
-            z--;
-        })
-    }
-    
-    /**
-     * Xử lí checkbox all của bảng
-     * @param {*} tableCheckboxes 
-     * @param {*} checkboxAll
-     * Author: Vũ Tùng Lâm (20/10/2022)
-     */
-    handleCheckAll(tableCheckboxes,checkboxAll){
-        tableCheckboxes.prop('checked',checkboxAll.prop('checked'));
-        this.anyCheckedBoxTable(tableCheckboxes,checkboxAll);
-    }
-    
-    /**
-     * Xử lí các checkbox trong bảng
-     * @param {*} tableCheckboxes 
-     * @param {*} checkboxAll 
-     */
-    anyCheckedBoxTable(tableCheckboxes,checkboxAll){
-        let checkeds = $('#empTable').find('.input-checkbox:not(#checkboxAll):checked').length;
-        checkboxAll.prop('checked',(checkeds == tableCheckboxes.length));
-        $('#btnDelete').prop('disabled', (checkeds == 0));
+    handleTable(){
+        try {
+            let self=this;
+            //double click cho hàng của bảng danh sách nhân viên
+            $(document).on('dblclick','tbody tr td:not(:first-child,:last-child)',function(){
+                self.modifyForm($(this));
+            });
+
+            //xử lí check all
+            $('#checkboxAll').click(function(){
+                let tableCheckboxes = $('tbody .input-checkbox');
+                tableCheckboxes.prop('checked',$(this).prop('checked'));
+                $('#btnDelete').prop('disabled', !$(this).prop('checked'));
+            });
+
+            //xử lí checkbox của từng hàng
+            $(document).on('click','tbody .input-checkbox',function(){
+                $('#checkboxAll').prop('checked',$('tbody .input-checkbox:checked').length==$('tbody .input-checkbox').length);
+                $('#btnDelete').prop('disabled', ($('tbody .input-checkbox:checked').length == 0));
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     /**
@@ -664,26 +672,31 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (24/10/2022)
      */
     handlePagingButtons(){
-        let self=this;
-        $('.page-button')
-        .on('click','.page-number',function(){
-            if(!$(this).hasClass('selected')){
-                $('#totalPage').data('currentpage',$(this).text());
+        try {
+            let self=this;
+            $('.page-button')
+            .on('click','.page-number',function(){
+                if(!$(this).hasClass('selected')){
+                    $('#totalPage').data('currentpage',$(this).text());
+                    self.loadData();
+                }
+            })
+            .on('click','.btn-prev',function(){
+                let currentPage = $('#totalPage').data('currentpage');
+                currentPage--;
+                $('#totalPage').data('currentpage',currentPage);
                 self.loadData();
-            }
-        })
-        .on('click','.btn-prev',function(){
-            let currentPage = $('#totalPage').data('currentpage');
-            currentPage--;
-            $('#totalPage').data('currentpage',currentPage);
-            self.loadData();
-        })
-        .on('click','.btn-next',function(){
-            let currentPage = $('#totalPage').data('currentpage');
-            currentPage++;
-            $('#totalPage').data('currentpage',currentPage);
-            self.loadData();
-        });
+            })
+            .on('click','.btn-next',function(){
+                let currentPage = $('#totalPage').data('currentpage');
+                currentPage++;
+                $('#totalPage').data('currentpage',currentPage);
+                self.loadData();
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
     
     /**
@@ -691,33 +704,38 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (20/10/2022)
      */
     handleComboBox(){
-        let self=this;
-        var comboboxes = $('.combobox');
-        comboboxes.each(function(){
-            let combobox = $(this);
-            let comboboxButton = combobox.find('.combobox-button');
-            let comboboxInput = combobox.find('.combobox-input');
-            let comboboxData = combobox.find('.combobox-data');
-    
-            // Ẩn/hiện comboboxData
-            comboboxButton.click(function(){comboboxData.toggle()});
-    
-            // Chọn item từ comboboxData
-            comboboxData.on('click','.data-item',function(){
-                comboboxData.find('.checked').removeClass('checked');
-                $(this).addClass('checked');
-                comboboxInput.val($(this).text());
-                if (comboboxInput.is('#departmentName')){
-                    let department = $(this).data('department');
-                    $('#departmentId').val(department.DepartmentId);
-                }
-                if(comboboxInput.is('#pageSize')){
-                    $('#totalPage').data('currentpage','1');
-                    self.loadData();
-                }
-                comboboxData.hide();
+        try {
+            let self=this;
+            var comboboxes = $('.combobox');
+            comboboxes.each(function(){
+                let combobox = $(this);
+                let comboboxButton = combobox.find('.combobox-button');
+                let comboboxInput = combobox.find('.combobox-input');
+                let comboboxData = combobox.find('.combobox-data');
+        
+                // Ẩn/hiện comboboxData
+                comboboxButton.click(function(){comboboxData.toggle()});
+        
+                // Chọn item từ comboboxData
+                comboboxData.on('click','.data-item',function(){
+                    comboboxData.find('.checked').removeClass('checked');
+                    $(this).addClass('checked');
+                    comboboxInput.val($(this).text());
+                    if (comboboxInput.is('#departmentName')){
+                        let department = $(this).data('department');
+                        $('#departmentId').val(department.DepartmentId);
+                    }
+                    if(comboboxInput.is('#pageSize')){
+                        $('#totalPage').data('currentpage','1');
+                        self.loadData();
+                    }
+                    comboboxData.hide();
+                });
             });
-        });
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
     
     /**
@@ -725,27 +743,43 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (20/10/2022)
      */
     handleDropdown(){
-        // let self =this;
-        var deleteWarning = $('.alert-warning-delete');
-    
-        // Ẩn/hiện dropdown xóa nhân viên
-        $('table').on('click','.dropdown-button',function(){
-            let dropdownList = $(this).siblings();
-            dropdownList.toggle();
-        });
-    
-        //chọn xóa nhân viên
-        $('table').on('click','.delete-item',function(){
-            //lấy dữ liệu nhân viên từ bảng
-            let employee = $(this).parents('tr').data('employee');
+        try {
+            let self =this;
+            // Ẩn/hiện dropdown xóa nhân viên
+            $('table').on('click','.dropdown-button',function(){
+                let dropdownList = $(this).next();
+                dropdownList.toggle();
+                if(dropdownList.is(':visible')){
+                    $(this).addClass('clicked');
+                }else{
+                    $(this).removeClass('clicked');
+                }
+            });
 
-            //hiện dialog cảnh báo việc xóa nhân viên
-            deleteWarning.find('.content-message').text(`Bạn có thực sự muốn xóa Nhân viên <${employee.EmployeeCode}> không?`);
-            deleteWarning.show();
-            deleteWarning.find('[tabindex="1"]').focus();
-            deleteWarning.data('empid',employee.EmployeeId);
-        })
-
+            //Ẩn dropdown khi click bên ngoài đropdown
+            $(document).click(function (e) {
+                $('.dropdown-list').each(function(){
+                    if ($(e.target).closest($(this)).length === 0 && !$(e.target).is($(this).prev())) {
+                            $(this).hide();
+                            $(this).prev().removeClass('clicked');
+                    }
+                });
+            });
+        
+            //chọn xóa nhân viên
+            $('table').on('click','.delete-item',function(){
+                //lấy dữ liệu nhân viên từ bảng
+                let employee = $(this).parents('tr').data('employee');
+                let deleteWarning = $('.alert-warning-delete');
+                //hiện dialog cảnh báo việc xóa nhân viên
+                deleteWarning.find('.content-message').text(`Bạn có thực sự muốn xóa Nhân viên <${employee.EmployeeCode}> không?`);
+                deleteWarning.show();
+                deleteWarning.find('[tabindex="1"]').focus();
+                deleteWarning.data('empid',employee.EmployeeId);
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     /**
@@ -753,16 +787,20 @@ class EmployeePage {
      * Author: Vũ Tùng Lâm (23/10/2022)
      */
     handleQuestionDialog(){
-        var alertQuestion = $('.alert-question');
-        alertQuestion
-        .on('click','.btn-deny',function(){
-            alertQuestion.hide();
-            $('#formDialog').find('.btn-close').click();
-        })
-        .on('click','.btn-confirm',function(){
-            alertQuestion.hide();
-            $('#btnSave').click();
-        })
+        try {
+            var alertQuestion = $('.alert-question');
+            alertQuestion
+            .on('click','.btn-deny',function(){
+                alertQuestion.hide();
+                $('#formDialog').find('.btn-close').click();
+            })
+            .on('click','.btn-confirm',function(){
+                alertQuestion.hide();
+                $('#btnSave').click();
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     /**
@@ -770,11 +808,15 @@ class EmployeePage {
      * @param {string} errorMessage 
      * Author: Vũ Tùng Lâm (24/10/2022)
      */
-    showAlertDanger(errorMessage){
-        let alertDanger = $('.alert-danger');
-        alertDanger.show();
-        alertDanger.find('.content-message').text(errorMessage);
-        alertDanger.find('.btn-close').focus();
+    showAlert(alert,errorMessage){
+        try {
+            alert.show();
+            alert.find('.content-message').text(errorMessage);
+            alert.find('.btn-close').focus();
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
     
 }

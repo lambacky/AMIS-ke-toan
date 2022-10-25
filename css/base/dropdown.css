@@ -8,8 +8,7 @@
     position:absolute;
     right:0;
     background-color: #fff;
-    /* z-index:1000;
-    width:130px; */
+    top:calc(100% + 2px );
 }
 .dropdown-item {
     color:black;
@@ -28,7 +27,7 @@
     background-color: inherit;
     cursor:pointer;
 }
-.dropdown-button:focus{
+.clicked{
     border: 1px solid blue;
 }
 

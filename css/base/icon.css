@@ -98,7 +98,7 @@
 }
 
 .icon-arrow-down-blue {
-    background-position: -891px -355px;
+    background-position: -893px -356px;
 }
 
 .icon-arrow-dropdown {
@@ -133,5 +133,7 @@
 }
 
 .icon-success {
-    background-position: -984px -456px;
+    background-position: -990px -462px;
+    width:36px;
+    height:36px;
 }

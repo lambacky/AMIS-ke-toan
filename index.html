@@ -199,104 +199,118 @@
                 </div>
             </div>
             <form id="employeeForm" class="dialog-body">
-                <div class="dialog-body-left w-49">
-                    <div class="input-wrapper w-39" >
-                        <label class="input-label">Mã <span class="require-mark">*</span></label>
-                        <input id="employeeCode" type="text" required class="required input" name="EmployeeCode" tabindex="1">
-                        <span class="input-error-mess">&lt;Mã&gt; không được để trống</span>
-                    </div>
-                    <div class="input-wrapper w-59">
-                        <label class="input-label">Tên <span class="require-mark">*</span></label>
-                        <input id="employeeName" type="text" required class="required input" name="EmployeeName" tabindex="2">
-                        <span class="input-error-mess">&lt;Tên&gt; không được để trống</span>
-                    </div>
-                    <div class="input-wrapper w-100" style="overflow:visible">
-                        <label class="input-label">Đơn vị <span class="require-mark">*</span></label>
-                        <div class="combobox">
-                            <input id="departmentId" type="hidden" name="DepartmentId">
-                            <input id="departmentName" required class=" required input combobox-input" type="text" name="DepartmentName" readonly tabindex="7">
-                            <span class="input-error-mess">&lt;Đơn vị&gt; không được để trống</span>
-                            <div class="combobox-button">
-                                <div class="icon icon-arrow-dropdown"></div>
+                <div class="dialog-body-top">
+                    <div class="dialog-body-left w-50">
+                        <div class="row-flex">
+                            <div class="input-wrapper w-40" >
+                                <label class="input-label">Mã <span class="require-mark">*</span></label>
+                                <input id="employeeCode" type="text" required class="required input" name="EmployeeCode" tabindex="1">
+                                <span class="input-error-mess">&lt;Mã&gt; không được để trống</span>
                             </div>
-                            <div id="departmentList" class="combobox-data department-list">
+                            <div class="input-wrapper flex-1">
+                                <label class="input-label">Tên <span class="require-mark">*</span></label>
+                                <input id="employeeName" type="text" required class="required input" name="EmployeeName" tabindex="2">
+                                <span class="input-error-mess">&lt;Tên&gt; không được để trống</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="input-wrapper w-100">
-                        <label class="input-label">Chức danh</label>
-                        <input id="employeePosition" type="text" class="input" name="EmployeePosition" tabindex="10">
-                    </div>
-                </div>
-                <div class="dialog-body-right w-49">
-                    <div class="input-wrapper w-39">
-                        <label class="input-label">Ngày sinh</label>
-                        <input id="dateOfBirth" type="date" class="input input-date" name="DateOfBirth" tabindex="3">
-                        <span class="input-error-mess">&lt;Ngày sinh&gt; không được lớn hơn hiện tại</span>
-                    </div>
-                    <div class="input-wrapper w-59">
-                        <label class="input-label">Giới tính</label>
-                        <div class="input-checkbox-list gender-list">
-                            <div class="input-checkbox-wrapper">
-                                <input class="input-checkbox" type="radio" value="1" name="Gender" checked tabindex="4">
-                                <label class="input-label">Nam</label>
-                            </div>
-                            <div class="input-checkbox-wrapper">
-                                <input class="input-checkbox" type="radio" value="0" name="Gender" tabindex="5">
-                                <label class="input-label">Nữ</label>
-                            </div>
-                            <div class="input-checkbox-wrapper">
-                                <input class="input-checkbox" type="radio" value="2" name="Gender" tabindex="6">
-                                <label class="input-label">Khác</label>
+                        
+                        <div class="input-wrapper" style="overflow:visible">
+                            <label class="input-label">Đơn vị <span class="require-mark">*</span></label>
+                            <div class="combobox">
+                                <input id="departmentId" type="hidden" name="DepartmentId">
+                                <input id="departmentName" required class=" required input combobox-input" type="text" name="DepartmentName" readonly tabindex="7">
+                                <span class="input-error-mess">&lt;Đơn vị&gt; không được để trống</span>
+                                <div class="combobox-button">
+                                    <div class="icon icon-arrow-dropdown"></div>
+                                </div>
+                                <div id="departmentList" class="combobox-data department-list">
+                                </div>
                             </div>
                         </div>
+                        <div class="input-wrapper">
+                            <label class="input-label">Chức danh</label>
+                            <input id="employeePosition" type="text" class="input" name="EmployeePosition" tabindex="10">
+                        </div>
                     </div>
-                    <div class="input-wrapper w-59" >
-                        <label class="input-label" title="Số chứng minh nhân dân">Số CMND</label>
-                        <input id="indentityNumber" type="text" class="input" name="IdentityNumber" tabindex="8">
-                    </div>
-                    <div class="input-wrapper w-39">
-                        <span class="input-label">Ngày cấp</span>
-                        <input id="identityDate" type="date" class="input input-date" name="IdentityDate" tabindex="9">
-                        <span class="input-error-mess">&lt;Ngày cấp&gt; không được lớn hơn hiện tại</span>
-                    </div>
-                    <div class="input-wrapper w-100">
-                        <span class="input-label">Nơi cấp</span>
-                        <input id="identityPlace" type="text" class="input" name="IdentityPlace" tabindex="11">
-                    </div>
+                    <div class="dialog-body-right w-50">
+                        <div class="row-flex">
+                            <div class="input-wrapper w-40">
+                                <label class="input-label">Ngày sinh</label>
+                                <input id="dateOfBirth" type="date" class="input input-date" name="DateOfBirth" tabindex="3">
+                                <span class="input-error-mess">&lt;Ngày sinh&gt; không được lớn hơn hiện tại</span>
+                            </div>
+                            <div class="input-wrapper flex-1">
+                                <label class="input-label">Giới tính</label>
+                                <div class="input-checkbox-list gender-list">
+                                    <div class="input-checkbox-wrapper">
+                                        <input class="input-checkbox" type="radio" value="1" name="Gender" checked tabindex="4">
+                                        <label class="input-label">Nam</label>
+                                    </div>
+                                    <div class="input-checkbox-wrapper">
+                                        <input class="input-checkbox" type="radio" value="0" name="Gender" tabindex="5">
+                                        <label class="input-label">Nữ</label>
+                                    </div>
+                                    <div class="input-checkbox-wrapper">
+                                        <input class="input-checkbox" type="radio" value="2" name="Gender" tabindex="6">
+                                        <label class="input-label">Khác</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-flex">
+                            <div class="input-wrapper w-60">
+                                <label class="input-label" title="Số chứng minh nhân dân">Số CMND</label>
+                                <input id="indentityNumber" type="text" class="input" name="IdentityNumber" tabindex="8">
+                            </div>
+                            <div class="input-wrapper flex-1">
+                                <span class="input-label">Ngày cấp</span>
+                                <input id="identityDate" type="date" class="input input-date" name="IdentityDate" tabindex="9">
+                                <span class="input-error-mess">&lt;Ngày cấp&gt; không được lớn hơn hiện tại</span>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <span class="input-label">Nơi cấp</span>
+                            <input id="identityPlace" type="text" class="input" name="IdentityPlace" tabindex="11">
+                        </div>
                 </div>
-                <div class="dialog-body-bottom w-100">
-                    <div class="input-wrapper w-100" >
+                
+                </div>
+                <div class="dialog-body-bottom">
+                    <div class="input-wrapper" >
                         <label class="input-label">Địa chỉ</label>
                         <input id="address" type="text" class="input" name="Address" tabindex="12">
                     </div>
-                    <div class="input-wrapper w-24" >
-                        <label class="input-label" title="điện thoại di động">ĐT di động</label>
-                        <input id="telephoneNumber" type="text" class="input" name="TelephoneNumber" tabindex="13">
+                    <div class="row-flex">
+                        <div class="input-wrapper w-25" >
+                            <label class="input-label" title="điện thoại di động">ĐT di động</label>
+                            <input id="telephoneNumber" type="text" class="input" name="TelephoneNumber" tabindex="13">
+                        </div>
+                        <div class="input-wrapper w-25" >
+                            <label class="input-label" title="điện thoại cố định">ĐT cố định</label>
+                            <input id="phoneNumber" type="text" class="input" name="PhoneNumber" tabindex="14">
+                        </div>
+                        <div class="input-wrapper w-25" >
+                            <label class="input-label">Email</label>
+                            <input id="email" type="text" class="input" name="Email" tabindex="15">
+                            <span class="input-error-mess">&lt;Email&gt; không đúng định dạng</span>
+                        </div>
+                        <div class="w-25"></div>
                     </div>
-                    <div class="input-wrapper w-24" >
-                        <label class="input-label" title="điện thoại cố định">ĐT cố định</label>
-                        <input id="phoneNumber" type="text" class="input" name="PhoneNumber" tabindex="14">
+                    <div class="row-flex">
+                        <div class="input-wrapper w-25" >
+                            <label class="input-label">Tài khoản ngân hàng</label>
+                            <input id="bankAccountNumber" type="text" class="input" name="BankAccountNumber" tabindex="16">
+                        </div>
+                        <div class="input-wrapper w-25" >
+                            <label class="input-label">Tên ngân hàng</label>
+                            <input id="bankName" type="text" class="input" name="BankName" tabindex="17">
+                        </div>
+                        <div class="input-wrapper w-25" >
+                            <label class="input-label">Chi nhánh</label>
+                            <input id="bankBranchName" type="text" class="input" name="BankBranchName" tabindex="18">
+                        </div>
+                        <div class="w-25"></div>
                     </div>
-                    <div class="input-wrapper w-24" >
-                        <label class="input-label">Email</label>
-                        <input id="email" type="text" class="input" name="Email" tabindex="15">
-                        <span class="input-error-mess">&lt;Email&gt; không đúng định dạng</span>
-                    </div>
-                    <div class="w-24"></div>
-                    <div class="input-wrapper w-24" >
-                        <label class="input-label">Tài khoản ngân hàng</label>
-                        <input id="bankAccountNumber" type="text" class="input" name="BankAccountNumber" tabindex="16">
-                    </div>
-                    <div class="input-wrapper w-24" >
-                        <label class="input-label">Tên ngân hàng</label>
-                        <input id="bankName" type="text" class="input" name="BankName" tabindex="17">
-                    </div>
-                    <div class="input-wrapper w-24" >
-                        <label class="input-label">Chi nhánh</label>
-                        <input id="bankBranchName" type="text" class="input" name="BankBranchName" tabindex="18">
-                    </div>
-                    <div class="w-24"></div>
                 </div>
             </form>
             <div class="dialog-footer">
@@ -360,6 +374,18 @@
                     <button class="btn btn-secondary btn-deny" tabindex="2">Không</button>
                     <button class="btn btn-confirm" tabindex="1">Có</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-wrapper alert alert-success">
+        <div class="dialog alert-dialog">
+            <div class="dialog-body alert-body">
+                <div class="icon icon-success"></div>
+                <div class="content-message"></div>
+            </div>
+            <div class="dialog-footer alert-success-footer">
+                <button class="btn btn-close" tabindex="1">Đóng</button>
             </div>
         </div>
     </div>
